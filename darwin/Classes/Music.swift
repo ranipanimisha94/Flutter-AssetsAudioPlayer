@@ -277,17 +277,17 @@ public class Player : NSObject, AVAudioPlayerDelegate {
         
         //https://stackoverflow.com/questions/34563451/set-mpnowplayinginfocenter-with-other-background-audio-playing
         //This isn't currently possible in iOS. Even just changing your category options to .MixWithOthers causes your nowPlayingInfo to be ignored.
-        do {
-            if #available(iOS 10.0, *) {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
-                try AVAudioSession.sharedInstance().setActive(true)
-            } else {
-                try AVAudioSession.sharedInstance().setCategory(.playback, options: [])
-                try AVAudioSession.sharedInstance().setActive(true)
-            }
-        } catch let error {
-            print(error)
-        }
+        // do {
+        //     if #available(iOS 10.0, *) {
+        //         try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+        //         try AVAudioSession.sharedInstance().setActive(true)
+        //     } else {
+        //         try AVAudioSession.sharedInstance().setCategory(.playback, options: [])
+        //         try AVAudioSession.sharedInstance().setActive(true)
+        //     }
+        // } catch let error {
+        //     print(error)
+        // }
     }
     
     func deinitMediaPlayerNotifEvent() {
@@ -508,28 +508,28 @@ public class Player : NSObject, AVAudioPlayerDelegate {
         }
         
         do {
-            #if os(iOS)
-            let category = getAudioCategory(respectSilentMode: respectSilentMode, showNotification: displayNotification)
-            let mode = AVAudioSession.Mode.default
+            // #if os(iOS)
+            // let category = getAudioCategory(respectSilentMode: respectSilentMode, showNotification: displayNotification)
+            // let mode = AVAudioSession.Mode.default
             
             
-            print("category " + category.rawValue)
-            print("mode " + mode.rawValue)
-            print("displayNotification " + displayNotification.description)
-            print("url: " + url.absoluteString)
+            // print("category " + category.rawValue)
+            // print("mode " + mode.rawValue)
+            // print("displayNotification " + displayNotification.description)
+            // print("url: " + url.absoluteString)
             
-            /* set session category and mode with options */
-            if #available(iOS 10.0, *) {
-                //try AVAudioSession.sharedInstance().setCategory(category, mode: mode, options: [.mixWithOthers])
-                try AVAudioSession.sharedInstance().setCategory(category, mode: .default, options: [])
-                try AVAudioSession.sharedInstance().setActive(true)
-            } else {
+            // /* set session category and mode with options */
+            // if #available(iOS 10.0, *) {
+            //     //try AVAudioSession.sharedInstance().setCategory(category, mode: mode, options: [.mixWithOthers])
+            //     try AVAudioSession.sharedInstance().setCategory(category, mode: .default, options: [])
+            //     try AVAudioSession.sharedInstance().setActive(true)
+            // } else {
                 
-                try AVAudioSession.sharedInstance().setCategory(category)
-                try AVAudioSession.sharedInstance().setActive(true)
+            //     try AVAudioSession.sharedInstance().setCategory(category)
+            //     try AVAudioSession.sharedInstance().setActive(true)
                 
-            }
-            #endif
+            // }
+            // #endif
             
             var item : SlowMoPlayerItem
             if networkHeaders != nil && networkHeaders!.count > 0 {

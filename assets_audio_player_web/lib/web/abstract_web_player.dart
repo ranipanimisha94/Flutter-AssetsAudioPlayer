@@ -54,7 +54,7 @@ abstract class WebPlayer {
       path = 'packages/$package/' + path;
     }
 
-    path = (window.location.href.replaceAll('/#/', '') + '/assets/' + path);
+    path = (window.location.href.split('/#/').first + '/assets/' + path);
     return path;
   }
 
